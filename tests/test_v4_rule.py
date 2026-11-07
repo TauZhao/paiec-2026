@@ -12,7 +12,8 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 os.environ["PAIEC_V4_CACHE"] = tempfile.mkdtemp(prefix="v4_test_")
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "submission"))
+_root = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_root / "submission" if (_root / "submission").is_dir() else _root))
 import e1_base  # noqa: E402
 import model  # noqa: E402
 
